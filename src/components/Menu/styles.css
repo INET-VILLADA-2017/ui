@@ -22,14 +22,14 @@
 }
 
 .Menu_list__item__link {
-    color: #616161;
+    color: #BDBDBD;
     font-size: 1.8em;
 }
 
 .Menu_list__item__link:hover {
-    color: #64B5F6;
+    color: #607D8B;
 }
 
 .Menu_list__item__link_active {
-    color: #2196F3;
+    color: #455A64;
 }

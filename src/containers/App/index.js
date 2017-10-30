@@ -7,6 +7,7 @@ import './styles.css'
 
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
+import Stats from '../../containers/Stats'
 
 class App extends Component {
 
@@ -16,12 +17,15 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Redirect from={'/'} exact to={'/charts'}/>
+                <Redirect from={'/'} exact to={'/stats'}/>
                 <div className="Nav_container">
                     <Route path={'/'} component={Nav}/>
                 </div>
                 <div className="Main_container">
                     <Route path={'/'} component={Menu}/>
+                    <Switch>
+                        <Route path={'/stats'} component={Stats}/>
+                    </Switch>
                 </div>
             </div>
         )
