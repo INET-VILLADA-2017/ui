@@ -1,3 +1,3 @@
-# Ｏ　Ｎ　Ｐ　２　０　１　７
+#Frontend web INET 2017
 
-Repositorio para las Olimpiadas Nacionales de Programación 2017 (Argentina)
+Frontend web para el sistema a desarrollar en las olimpiadas de programacion INET 2017.
