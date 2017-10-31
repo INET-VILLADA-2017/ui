@@ -15,13 +15,26 @@
 }
 
 .Nav_list__logo {
-    margin-right: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-basis: 4em;
     height: 4em;
     background-color: #455A64;
+}
+
+.Nav_list__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: 2em;
+}
+
+.Nav_list__box select{
+    background: transparent;
+    outline:none;
+    height: 2em;
 }
 
 .Nav_list__logo__text {

@@ -6,35 +6,13 @@ import './styles.css'
 
 class Stats extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            parameter: null,
-            samples: [],
-        }
-    }
-
-    componentDidMount(){
-        this.setState({
-            samples: this.props.samples,
-        })
-    }
-
-    /*
-    componentWillReceiveProps(props) {
-        this.setState({
-            samples: props.samples,
-        })
-    }
-    */
-
     render(){
         return (
             <div className={'Chart_wrapper'}>
                 <ParametersMenu />
                 <div className={'Chart_box'}>
                     <span className={'Chart_box__label'}>TESTING{this.props.parameter}</span>
-                    <LineChart width={800} height={400} data={this.state.samples}>
+                    <LineChart width={800} height={400} data={this.props.samples}>
                         <XAxis dataKey="hora" hide/>
                         <YAxis hide/>
                         <Tooltip/>

@@ -8,6 +8,9 @@ import './styles.css'
 import Menu from '../../components/Menu'
 import Nav from '../../components/Nav'
 import Stats from '../../containers/Stats'
+import Reports from '../../containers/Reports'
+import Config from '../../containers/Config'
+import NotFound from '../../containers/NotFound'
 
 class App extends Component {
 
@@ -17,7 +20,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Redirect from={'/'} exact to={'/stats'}/>
+                {this.props.location.pathname === '/' && <Redirect from={'/'} exact to={'/stats'}/>}
                 <div className="Nav_container">
                     <Route path={'/'} component={Nav}/>
                 </div>
@@ -25,6 +28,9 @@ class App extends Component {
                     <Route path={'/'} component={Menu}/>
                     <Switch>
                         <Route path={'/stats'} component={Stats}/>
+                        <Route path={'/reports'} component={Reports}/>
+                        <Route path={'/config'} component={Config}/>
+                        <Route component={NotFound}/>
                     </Switch>
                 </div>
             </div>
