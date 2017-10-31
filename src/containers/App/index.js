@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
+import { getNurseries, getParams } from '../../actions/data'
 import { withRouter } from 'react-router'
 import './styles.css'
 
@@ -15,6 +16,8 @@ import NotFound from '../../containers/NotFound'
 class App extends Component {
 
     componentWillMount() {
+        this.props.getNurseries()
+        this.props.getParams()
     }
 
     render() {
@@ -39,6 +42,8 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+    getNurseries: bindActionCreators(getNurseries, dispatch),
+    getParams: bindActionCreators(getParams, dispatch),
 })
 
 export default withRouter(connect(() => ({}), mapDispatchToProps)(App))

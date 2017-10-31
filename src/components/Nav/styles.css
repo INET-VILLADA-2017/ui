@@ -3,7 +3,7 @@
     flex: 0 0 100%;
     align-items: center;
     justify-content: flex-end;
-    background-color: #fff;
+    background-color: #354052;
 }
 
 .Nav_list {
@@ -20,7 +20,14 @@
     justify-content: center;
     flex-basis: 4em;
     height: 4em;
-    background-color: #455A64;
+    background-color: #fafafa;
+}
+
+
+.Nav_list__logo__text {
+    font-size: .9em;
+    font-weight: 800;
+    color: #354052;
 }
 
 .Nav_list__box {
@@ -32,16 +39,11 @@
 }
 
 .Nav_list__box select{
-    background: transparent;
+    background: #fafafa;
     outline:none;
     height: 2em;
 }
 
-.Nav_list__logo__text {
-    font-size: .9em;
-    font-weight: 800;
-    color: #fff;
-}
 
 .Nav_list__item {
     margin-right: 2em;
@@ -52,22 +54,22 @@
 }
 
 .Nav_list__item:hover > .Nav_list__item__icon {
-    color: #646464;
+    color: #E0E0E0;
 }
 
 .Nav_list__item__icon {
-    color: #212121;
+    color: #fafafa;
     font-size: 1.6em;
 }
 
 .Nav_list__item:hover > .Nav_list__item__text {
-    color: #646464;
+    color: #E0E0E0;
 }
 
 .Nav_list__item__text {
     font-size: .8em;
     font-weight: 700;
-    color: #212121;
+    color: #fafafa;
     margin-right: .5em;
     text-decoration: none;
 }

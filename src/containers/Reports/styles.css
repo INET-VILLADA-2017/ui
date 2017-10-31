@@ -1,13 +1,13 @@
     .Reports_wrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-basis: 100%;
 }
 
 .Table {
-    width: 100%;
+    width: 85%;
+    height: 100%;
     border: 0;
     box-shadow: none !important;
 }

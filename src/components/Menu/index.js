@@ -18,7 +18,9 @@ const Menu = () => (
                         radius={2}
                         fontSize={'.8em'}
                         padding={5}
-                        background={'#424242'}
+                        border={'#ddd'}
+                        color={'#354052'}
+                        background={'#fafafa'}
                     >
                     <NavLink className={'Menu_list__item__link'} to={'/stats'} activeClassName={'Menu_list__item__link_active'}><MdShowChart/></NavLink>
                     </Tooltip>
@@ -30,7 +32,9 @@ const Menu = () => (
                         radius={2}
                         fontSize={'.8em'}
                         padding={5}
-                        background={'#424242'}
+                        border={'#ddd'}
+                        color={'#354052'}
+                        background={'#fafafa'}
                     >
                     <NavLink className={'Menu_list__item__link'} to={'/reports'} activeClassName={'Menu_list__item__link_active'}><MdAssignment/></NavLink>
                     </Tooltip>
@@ -42,7 +46,9 @@ const Menu = () => (
                         radius={2}
                         fontSize={'.8em'}
                         padding={5}
-                        background={'#424242'}
+                        border={'#ddd'}
+                        color={'#354052'}
+                        background={'#fafafa'}
                     >
                     <NavLink className={'Menu_list__item__link'} to={'/config'} activeClassName={'Menu_list__item__link_active'}><MdSettings/></NavLink>
                     </Tooltip>

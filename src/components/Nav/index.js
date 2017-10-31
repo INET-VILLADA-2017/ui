@@ -3,27 +3,18 @@ import {
     MdAccountCircle
 } from 'react-icons/lib/md'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { setCurrent } from '../../actions/data'
 import './styles.css'
 
 class Nav extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            current: null
+    onSelectChange = (e) => this.props.setCurrent(e.target.value)
+
+    componentWillReceiveProps(props) {
+        if (props.nurseries) {
+            this.props.setCurrent(props.nurseries[0].id)
         }
-    }
-
-    componentDidMount() {
-        this.setState({
-            current: this.props.nuerseries[0].id
-        })
-    }
-
-    onSelectChange = (e) => {
-        this.setState({
-            current: e.target.value
-        })
     }
 
     render(){
@@ -34,11 +25,13 @@ class Nav extends Component {
                         <span className={'Nav_list__logo__text'}>{'INET.'}</span>
                     </li>
                     <li className={'Nav_list__box'}>
+                        { this.props.nurseries && (
                         <select onChange={this.onSelectChange}>
-                            {this.props.nuerseries.map((e) => (
-                                <option key={`nursery-${e.id}`} value={e.id}>{e.name}</option>
+                            {this.props.nurseries.map((e) => (
+                                <option key={`nursery-${e.id}`} value={e.id}>{e.business_name}</option>
                             ))}
                         </select>
+                        )}
                     </li>
                     <li className={'Nav_list__item'}>
                         <a href={'http://www.google.com'} className={'Nav_list__item__text'}>{'IR AL ADMIN'}</a>
@@ -54,7 +47,11 @@ class Nav extends Component {
 
 
 const mapStateToProps = (state) => ({
-    nuerseries: state.data.nurseries
+    nurseries: state.data.nurseries
 })
 
-export default connect(mapStateToProps)(Nav)
+const mapDispatchToProps = (dispatch) => ({
+    setCurrent: bindActionCreators(setCurrent, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)
