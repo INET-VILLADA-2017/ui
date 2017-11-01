@@ -25,7 +25,7 @@ class Nav extends Component {
                         <span className={'Nav_list__logo__text'}>{'INET.'}</span>
                     </li>
                     <li className={'Nav_list__box'}>
-                        { this.props.nurseries && (
+                        { this.props.nurseries && this.props.isAuthenticated && (
                         <select onChange={this.onSelectChange}>
                             {this.props.nurseries.map((e) => (
                                 <option key={`nursery-${e.id}`} value={e.id}>{e.business_name}</option>
@@ -47,7 +47,8 @@ class Nav extends Component {
 
 
 const mapStateToProps = (state) => ({
-    nurseries: state.data.nurseries
+    nurseries: state.data.nurseries,
+    isAuthenticated: state.auth.isAuthenticated
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import ProtectedRoute from '../../components/ProtectedRoute'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
 import { getNurseries, getParams } from '../../actions/data'
@@ -11,6 +12,7 @@ import Nav from '../../components/Nav'
 import Stats from '../../containers/Stats'
 import Reports from '../../containers/Reports'
 import Config from '../../containers/Config'
+import Login from '../../containers/Login'
 import NotFound from '../../containers/NotFound'
 
 class App extends Component {
@@ -23,16 +25,17 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                {this.props.location.pathname === '/' && <Redirect from={'/'} exact to={'/stats'}/>}
+                {this.props.location.pathname === '/' && <Redirect to={'/stats'}/>}
                 <div className="Nav_container">
-                    <Route path={'/'} component={Nav}/>
+                    <Route path={'/'} component={Nav} isAuthenticated={this.props.isAuthenticated}/>
                 </div>
                 <div className="Main_container">
-                    <Route path={'/'} component={Menu}/>
+                    <Route path={'/'} component={Menu} isAuthenticated={this.props.isAuthenticated}/>
                     <Switch>
-                        <Route path={'/stats'} component={Stats}/>
-                        <Route path={'/reports'} component={Reports}/>
-                        <Route path={'/config'} component={Config}/>
+                        <ProtectedRoute path={'/stats'} component={Stats} isAuthenticated={this.props.isAuthenticated}/>
+                        <ProtectedRoute path={'/reports'} component={Reports} isAuthenticated={this.props.isAuthenticated}/>
+                        <ProtectedRoute path={'/config'} component={Config} isAuthenticated={this.props.isAuthenticated}/>
+                        <Route path={'/login'} component={Login}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
@@ -41,9 +44,13 @@ class App extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
 const mapDispatchToProps = (dispatch) => ({
     getNurseries: bindActionCreators(getNurseries, dispatch),
     getParams: bindActionCreators(getParams, dispatch),
 })
 
-export default withRouter(connect(() => ({}), mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

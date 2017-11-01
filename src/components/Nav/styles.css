@@ -20,7 +20,7 @@
     justify-content: center;
     flex-basis: 4em;
     height: 4em;
-    background-color: #fafafa;
+    background-color: #fff;
 }
 
 
@@ -39,7 +39,7 @@
 }
 
 .Nav_list__box select{
-    background: #fafafa;
+    background: #fff;
     outline:none;
     height: 2em;
 }
