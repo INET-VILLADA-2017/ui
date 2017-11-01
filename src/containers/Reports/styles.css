@@ -1,0 +1,31 @@
+    .Reports_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+}
+
+.Table {
+    width: 85%;
+    height: 100%;
+    border: 0;
+    box-shadow: none !important;
+}
+
+.-pagination {
+    box-shadow: none !important;
+}
+
+.rt-th {
+    background-color: #fff;
+    font-weight: 700;
+    color: #616161;
+}
+
+.rt-td {
+    text-align: center;
+}
+
+.rt-thead {
+    box-shadow: 0 1px 5px rgba(100,100,100,0.1) !important;
+}

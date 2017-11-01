@@ -6,9 +6,10 @@ import {
     MdAssignment,
     MdSettings
 } from 'react-icons/lib/md'
+import { connect } from 'react-redux'
 import './styles.css'
 
-const Menu = () => (
+const Menu = ({admin, supervisor}) => (
     <div className={'Menu_wrapper'}>
         <ul className={'Menu_list'}>
                 <li className={'Menu_list__item'}>
@@ -18,7 +19,9 @@ const Menu = () => (
                         radius={2}
                         fontSize={'.8em'}
                         padding={5}
-                        background={'#424242'}
+                        border={'#ddd'}
+                        color={'#354052'}
+                        background={'#fafafa'}
                     >
                     <NavLink className={'Menu_list__item__link'} to={'/stats'} activeClassName={'Menu_list__item__link_active'}><MdShowChart/></NavLink>
                     </Tooltip>
@@ -30,11 +33,14 @@ const Menu = () => (
                         radius={2}
                         fontSize={'.8em'}
                         padding={5}
-                        background={'#424242'}
+                        border={'#ddd'}
+                        color={'#354052'}
+                        background={'#fafafa'}
                     >
                     <NavLink className={'Menu_list__item__link'} to={'/reports'} activeClassName={'Menu_list__item__link_active'}><MdAssignment/></NavLink>
                     </Tooltip>
                 </li>
+            {(admin || supervisor) && (
                 <li className={'Menu_list__item'}>
                     <Tooltip
                         content={'Configuracion'}
@@ -42,13 +48,21 @@ const Menu = () => (
                         radius={2}
                         fontSize={'.8em'}
                         padding={5}
-                        background={'#424242'}
+                        border={'#ddd'}
+                        color={'#354052'}
+                        background={'#fafafa'}
                     >
                     <NavLink className={'Menu_list__item__link'} to={'/config'} activeClassName={'Menu_list__item__link_active'}><MdSettings/></NavLink>
                     </Tooltip>
                 </li>
+            )}
         </ul>
     </div>
 )
 
-export default Menu
+const mapStateToProps = (state) => ({
+    supervisor: state.auth.supervisor,
+    admin: state.auth.admin,
+})
+
+export default connect(mapStateToProps)(Menu)
