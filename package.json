@@ -17,6 +17,7 @@
     "react-table": "^6.5.3",
     "recharts": "^1.0.0-apha.5",
     "redux": "^3.7.2",
+    "redux-persist": "^5.2.2",
     "redux-thunk": "^2.2.0",
     "tcomb-form": "^0.9.17"
   },
