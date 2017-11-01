@@ -5,6 +5,8 @@ import {
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { setCurrent } from '../../actions/data'
+import { showLogout } from '../../actions/display'
+import { ADMIN_URL } from '../../utils/config'
 import './styles.css'
 
 class Nav extends Component {
@@ -25,7 +27,7 @@ class Nav extends Component {
                         <span className={'Nav_list__logo__text'}>{'INET.'}</span>
                     </li>
                     <li className={'Nav_list__box'}>
-                        { this.props.nurseries && this.props.isAuthenticated && (
+                        { this.props.nurseries && (
                         <select onChange={this.onSelectChange}>
                             {this.props.nurseries.map((e) => (
                                 <option key={`nursery-${e.id}`} value={e.id}>{e.business_name}</option>
@@ -33,10 +35,12 @@ class Nav extends Component {
                         </select>
                         )}
                     </li>
+                    {this.props.admin && (
                     <li className={'Nav_list__item'}>
-                        <a href={'http://www.google.com'} className={'Nav_list__item__text'}>{'IR AL ADMIN'}</a>
+                        <a href={ADMIN_URL} className={'Nav_list__item__text'}>{'IR AL ADMIN'}</a>
                     </li>
-                    <li className={'Nav_list__item'}>
+                    )}
+                    <li onClick={this.props.showLogout} className={'Nav_list__item'}>
                         <MdAccountCircle className={'Nav_list__item__icon'} />
                     </li>
                 </ul>
@@ -48,11 +52,14 @@ class Nav extends Component {
 
 const mapStateToProps = (state) => ({
     nurseries: state.data.nurseries,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    supervisor: state.auth.supervisor,
+    admin: state.auth.admin,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    setCurrent: bindActionCreators(setCurrent, dispatch)
+    setCurrent: bindActionCreators(setCurrent, dispatch),
+    showLogout: bindActionCreators(showLogout, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
